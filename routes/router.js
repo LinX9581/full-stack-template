@@ -1,5 +1,6 @@
 import express from 'express';
 import moment from 'moment';
+// import query from './mysql';
 
 let router = express.Router();
 router.get('/', async function (req, res) {
