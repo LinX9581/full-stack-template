@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" type="text/css" media="all" href="daterangepicker.css" />
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+
+    <script type="text/javascript" src="daterangepicker.js"></script>
+</head>
+
+<body>
+    <div class="form-group col-4">
+        <input type="text" name="dates" class="form-control" id="datePicker">
+    </div>
+    <div class="row d-none">
+        <div id="begin_date"></div>
+        <div id="end_date"></div>
+    </div>
+    <button class="test">asdf</button>
+    <script>
+        let pickerYesterday = moment(new Date()).add(-1, 'days').format('MM-DD-YYYY');
+        let pickerGaYesterday = moment(new Date()).add(-1, 'days').format('YYYY-MM-DD');
+        let picker30DaysAgo = moment(new Date()).add(-33, 'days').format('MM-DD-YYYY');
+        // console.log(pickerYesterday)
+        $("#begin_date").html("<text>" + pickerGaYesterday + "</text>");
+        $("#end_date").html("<text>" + pickerGaYesterday + "</text>");
+
+        test()
+        async function test() {
+
+            let startTime = ''
+            let a = await $('#datePicker').daterangepicker({
+                "timePicker": true,
+                "dateLimit": {
+                    "days": 32
+                },
+                "startDate": pickerYesterday,
+                "endDate": pickerYesterday,
+                "minDate": "01/01/2021",
+                "maxDate": "12/31/2021"
+            }, function (start, end, label) {
+                console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+                $("#begin_date").html("<text>" + start.format('YYYY-MM-DD') + "</text>");
+                $("#end_date").html("<text>" + end.format('YYYY-MM-DD') + "</text>");
+                // return start.format('YYYY-MM-DD')
+            });
+
+        }
+        $('.test').click(function () {
+            console.log($("#begin_date").text())
+        })
+    </script>
+</body>
+
+</html>

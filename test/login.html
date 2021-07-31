@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="send" type="button" value="send" />
+    <script>
+        $('#send').click(function() {
+            var button = $(this);
+            button.attr('disabled', 'disabled');
+            setTimeout(function() {
+                button.removeAttr('disabled');
+            }, 3000);
+        });
+
+        $('#datatable').find('tbody > tr').each(function() {
+                var $tds = $(this).find('td').html();
+                console.log($tds)
+            })
+            // table 第一行固定是ID 最後一行固定是標題 ； 如果變的話需要把每一行加上class
+        var $tds = $(this).find('td'),
+            detailDataId = $tds.first().text(),
+            detailDataTitle = $tds.last().text();
+        $tds.replaceWith('<td><a href="https://nownews.com/news/' + detailDataId + '" target=_blank>' + queryDataId + '</a></td>');
+    </script>
+
+
+</body>
+
+</html>
