@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            left: 0;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            top: 45px;
+            right: 0px;
+            width: 200px;
+            background-color: white;
+            font-weight: bold;
+            position: absolute;
+            display: none;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        
+        li a {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        li {
+            padding: 8px 16px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        li:last-child {
+            border-bottom: none;
+        }
+        
+        li:hover {
+            background-color: #e5e5e5;
+            color: white;
+        }
+        
+        .button {
+            width: 178px;
+            height: 35px;
+            background-color: #D0D0D0;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .button:before {
+            content: "";
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            border: 10px solid;
+            border-color: white transparent transparent transparent;
+            right: 6px;
+            top: 18px;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Open modal for
+        @mdo</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Open modal for
+        @fat</button>
+    <button type="button" data-toggle="modal" data-target="#exampleModal">Open modal for
+        @getbootstrap</button>
+    <button class='test'>tet</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="dropdown">
+                        <div class="button"> My Setting </div>
+                        <ul class="dropdown_ul">
+                            <li><a>Create Page</a></li>
+                            <li><a>Manage Pages</a></li>
+                            <li><a>Create Ads</a></li>
+                            <li><a>Manage Ads</a></li>
+                            <li><a>Activity Logs</a></li>
+                            <li><a>Setting</a></li>
+                            <li><a>Log Out</a></li>
+                        </ul>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="">活動名稱</label>
+                            <span></span>
+                            <input type="text" class="form-control" placeholder="請輸入活動名稱">
+                        </div>
+                        <div class="form-group">
+                            <label for="">廣告主</label>
+                            <span></span>
+                            <input type="text" class="form-control" placeholder="請輸入廣告主">
+                        </div>
+                        <div class="form-group">
+                            <label for="">委刊公司</label>
+                            <span></span>
+                            <input type="text" class="form-control" placeholder="請輸入委刊公司">
+                        </div>
+                        <div class="form-group">
+                            <label for="">聯絡人</label>
+                            <span></span>
+                            <input type="text" class="form-control" placeholder="請輸入聯絡人">
+                        </div>
+                        <div class="form-group">
+                            <label for="">類型</label>
+                            <select class="form-control">
+                                <option value="">CPM</option>
+                                <option value="">CPC</option>
+                                <option value="">CPL</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">備註</label>
+                            <span></span>
+                            <input type="text" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script>
+        $('.test').click(function() {
+
+            $('#exampleModal').modal('show');
+        })
+
+
+        $(document).ready(function() {
+            $('.button').text($('.dropdown_ul').first().text())
+                // on click on  setting button
+            $(".button").click(function() {
+                var val = $(this).attr('id');
+                console.log(val);
+                if (val == 1) {
+                    $("ul").hide();
+                    $(this).attr('id', '0');
+                } else {
+                    $("ul").show();
+                    $(this).attr('id', '1');
+                }
+
+            });
+            $('ul>li').click(function() {
+                    $('.button').text($(this).text())
+                    console.log($(this).text());
+                    $("ul").hide();
+                    $(".button").attr('id', '0');
+
+                })
+                //Mouse click on setting button and ul list
+            $("ul, .button").mouseup(function() {
+                return false;
+            });
+
+            //Document Click
+            $(document).mouseup(function() {
+                $("ul").hide();
+                $(".button").attr('id', '0');
+            });
+        });
+        $('.test').attr({
+            "data-toggle": "modal",
+            "data-target": "#exampleModal"
+        })
+    </script>
+</body>
+
+</html>
